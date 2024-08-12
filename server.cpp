@@ -88,12 +88,12 @@ int main(int argc, char *argv[]) {
   bool runserver = false;
   bool runclient = false;
 
-  int serverloval = 0;
+  int serverloval = 3;
   int clientloval = 3;
-  
+
   ssize_t serverFid = -1;
   int clientfd = -1;
-  
+
   if (argc > 1) {
     printf("arg: %s\n", argv[1]);
     const char *arg1 = argv[1];

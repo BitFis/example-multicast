@@ -11,8 +11,7 @@ make
 
 ## Run
 
-demo send multicast and receive nothing (server only 1 socket).
-`IPV6_MULITCAST_LOOP` disabled on socket.
+Start server with default `IPV6_MULITCAST_LOOP` value.
 
 ```bash
 ./build/main server 
@@ -24,7 +23,7 @@ Only send a multicast message (`IPV6_MULITCAST_LOOP` default value)
 ./build/main client
 ```
 
-Both server (`IPV6_MULITCAST_LOOP` disabled) and client running (`IPV6_MULITCAST_LOOP` default value).
+Use same socket for server and sending (`IPV6_MULITCAST_LOOP` default value).
 
 ```bash
 ./build/main both
