@@ -90,20 +90,22 @@ int main(int argc, char *argv[]) {
 
   int serverloval = 0;
   int clientloval = 3;
-
+  
+  ssize_t serverFid = -1;
+  int clientfd = -1;
+  
   if (argc > 1) {
     printf("arg: %s\n", argv[1]);
     const char *arg1 = argv[1];
 
     if (strcmp(arg1, "server") == 0) {
-      runserver = true;
+      serverFid = server();
     }
     if (strcmp(arg1, "client") == 0) {
-      runclient = true;
+      clientfd = client();
     }
     if (strcmp(arg1, "both") == 0) {
-      runclient = true;
-      runserver = true;
+      clientfd = serverFid = server();
     }
   }
 
@@ -119,15 +121,6 @@ int main(int argc, char *argv[]) {
   }
 
   bool sent = false;
-
-  ssize_t serverFid = -1;
-  if (runserver) {
-    serverFid = server();
-  }
-  int clientfd = -1;
-  if (runclient) {
-    clientfd = client();
-  }
 
   setloopbackenabled(serverFid, serverloval);
   setloopbackenabled(clientfd, clientloval);
